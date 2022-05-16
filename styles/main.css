@@ -1,0 +1,39 @@
+body {
+    background: #35ac9a  
+}
+
+.header {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.menu {
+    height: 40px;
+    width: 100%;
+    display: flex;
+}
+
+option {
+    background: #d9faea;
+}
+
+button {
+    background: #d9faea;
+}
+
+select {
+    background: #d9faea;
+}
+
+#gas {
+    position: absolute;
+}
+  
+#nasm {
+    position: absolute;
+}
+
+#output {
+    position: absolute;
+}
