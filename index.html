@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GasNasm Converter</title>
+    <meta name="author" content="Dawid Opioła">
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css"/>
+    <link href="https://codemirror.net/theme/dracula.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
+    <script type="text/javascript" src="https://codemirror.net/mode/gas/gas.js"></script>
 </head>
+
 <body>
-    
+    <div class="header">
+        <h1>Gas & Nasm Code Converter</h1>
+    </div>
+
+    <div id="menu-panel" class="menu">
+        <select id="selector">
+            <option value="1">GAS</option>
+            <option value="2">NASM</option>
+        </select>
+        <button>OUTPUT</button>
+    </div>
+
+    <div class="editor">
+        <div class="code">
+            <textarea id="gas-editor"></textarea>
+        </div>
+    </div>
+    <div class="editor">
+        <div class="code">
+            <textarea id="nasm-editor"></textarea>
+        </div>
+    </div>
+    <div class="editor">
+        <div class="code">
+            <textarea id="output-editor"></textarea>
+        </div>
+    </div>
 </body>
+
 </html>
