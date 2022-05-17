@@ -10,31 +10,22 @@ body {
 
 .container-panel {
     display: flex;
+    justify-content: center;
+    margin-top: 5%;
 }
 
 .container-editor {
-    margin: 20px;
-    width: 50%;
-    height: 50%;
-    display: row;
-    /* margin: 15%; */
+    margin-left: 60px;
+    margin-right: 60px;
+    box-shadow: 0.2px 0.2px 3px #615f5f inset, 2px 2px 3px #BDBDBD;
 }
 
 .nav {
     background-color: rgb(163, 177, 167);
     overflow: hidden;
     display: flex;
-    padding: 8px;
-    box-shadow: 2px 2px 3px #BDBDBD inset, 2px 2px 3px #BDBDBD;
-}
-
-.nav a {
-    /* float: left;
-    color: #f2f2f2;
-    text-align: right;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px; */
+    padding: 12px;
+    /* box-shadow: 0.2px 0.2px 3px #BDBDBD inset, 2px 2px 3px #BDBDBD; */
 }
 
 .download-upload {
@@ -57,8 +48,11 @@ body {
 }
 
 .output-text {
-    margin-left: 50%;
-    /* padding: 14px 16px; */
+    margin-left: 45%;
+    font-size: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-shadow:0px 1px 0px #e0dadace;
 }
 
 option {

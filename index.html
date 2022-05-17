@@ -49,20 +49,19 @@
     <script>
         var input_editor = CodeMirror.fromTextArea(document.getElementById('input-editor'), {
             mode: "gas",
-            // theme: "neo",
             tabSize: 4,
             lineNumbers: true
         });
+
         var output_editor = CodeMirror.fromTextArea(document.getElementById('output-editor'), {
             mode: "gas",
-            // theme: "neo",
             tabSize: 4,
             lineNumbers: true,
             readOnly: true
         });
-        // input_editor.setSize(800, 600);
-        // output_editor.setSize(800, 600);
 
+        input_editor.setSize(700, 600);
+        output_editor.setSize(700, 600);
     </script>
 </body>
 
