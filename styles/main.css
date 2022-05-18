@@ -15,8 +15,8 @@ body {
 }
 
 .container-editor {
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
     box-shadow: 0.2px 0.2px 3px #615f5f inset, 2px 2px 3px #BDBDBD;
 }
 
