@@ -12,7 +12,6 @@
 
     <script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
     <script type="text/javascript" src="https://codemirror.net/mode/gas/gas.js"></script>
-    <script type="text/javascript" src="scripts/editors-display.js"></script>
 </head>
 
 <body>
@@ -27,7 +26,8 @@
                     <option value="G">GAS</option>
                     <option value="N">NASM</option>
                 </select>
-                <a class="download-upload">Upload</a>
+                <input id="real-upload" type="file" onchange="readFile(this)" hidden="hidden"> 
+                <button id="upload-button" class="download-upload">Upload</button>
             </div>
             <div class="editor" id="input-editor-wrapper">
                 <textarea id="input-editor"></textarea>
@@ -60,9 +60,11 @@
             readOnly: true
         });
 
-        input_editor.setSize(700, 600);
-        output_editor.setSize(700, 600);
+        input_editor.setSize(500, 500);
+        output_editor.setSize(500, 500);
     </script>
+    <script type="text/javascript" src="scripts/read-file.js"></script>
+    <script type="text/javascript" src="scripts/editors-display.js"></script>
 </body>
 
 </html>
