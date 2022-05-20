@@ -16,7 +16,6 @@ function readFile(input) {
     
     reader.onload = function() {
         input_editor.setValue(reader.result);
-        output_editor.setValue(reader.result);
     };
   
     reader.onerror = function() {
