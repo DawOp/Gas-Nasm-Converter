@@ -1,10 +1,22 @@
+let convert_timer = 0;
+
 function changeEditor() {
-    var selectBox = document.getElementById("select-syntax");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    if (selectedValue == "G") {
-        input_editor.refresh();
+    input_editor.setValue("");
+    output_editor.setValue("");
+}
+
+input_editor.on("change", function() {
+    convert_timer = 3;
+});
+
+function convert_listener() {
+    if (convert_timer == 0) {
+        output_editor.setValue(input_editor.getValue());
+        // output_editor.setValue("<Compilation Error>");
     }
     else {
-        input_editor.refresh();
+        convert_timer--;
     }
 }
+
+setInterval(convert_listener,500); // 5
