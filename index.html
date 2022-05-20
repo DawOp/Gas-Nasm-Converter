@@ -16,7 +16,7 @@
 
 <body>
     <div class="header">
-        <h1>Gas & Nasm Code Converter</h1>
+        <h1>GAS & NASM Syntax Converter</h1>
     </div>
 
     <div class="container-panel">
@@ -37,7 +37,7 @@
         <div class="container-editor">
             <div class="nav">
                 <div class="loader" id="conversion-loader"></div>
-                <a class="output-text">Output</a>
+                <a class="output-text">OUTPUT</a>
                 <button id="download-button" class="download-upload">Download</button>
             </div>
 
@@ -53,13 +53,15 @@
             tabSize: 4,
             dragDrop: true,
             lineNumbers: true,
+            theme: "dracula"
         });
 
         var output_editor = CodeMirror.fromTextArea(document.getElementById('output-editor'), {
             mode: "gas",
             tabSize: 4,
             lineNumbers: true,
-            readOnly: true
+            readOnly: true,
+            theme: "dracula"
         });
 
         input_editor.setSize(500, 500);
