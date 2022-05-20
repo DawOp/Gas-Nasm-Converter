@@ -50,7 +50,8 @@
         var input_editor = CodeMirror.fromTextArea(document.getElementById('input-editor'), {
             mode: "gas",
             tabSize: 4,
-            lineNumbers: true
+            dragDrop: true,
+            lineNumbers: true,
         });
 
         var output_editor = CodeMirror.fromTextArea(document.getElementById('output-editor'), {
