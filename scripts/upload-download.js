@@ -21,6 +21,8 @@ function readFile(input) {
     reader.onerror = function() {
         console.log(reader.error);
     };
+    
+    document.getElementById('real-upload').value = "";
 }
 
 // Download file
