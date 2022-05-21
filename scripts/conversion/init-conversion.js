@@ -3,10 +3,10 @@ let myArray = "";
 function start_conversion(editor) {
     myArray = splitInputIntoLines(editor);
     if (conversionType() == "gas") {
-        output_editor.setValue(myArray[0][3]);
+        output_editor.setValue("at&t");
     }
     else {
-        output_editor.setValue(myArray[0][3]);
+        output_editor.setValue("intel");
     }
 }
 
