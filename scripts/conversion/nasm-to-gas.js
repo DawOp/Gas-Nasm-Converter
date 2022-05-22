@@ -13,10 +13,9 @@ function changeCommentToSemicolon(splitedCode) {
 
 function addPercentToRegisters(splitedCode) {
     let replacedPercent = splitedCode;
-    // console.log(registers[2]);
+
     for (let i = 0; i < registers.length; i++) {
-        let re = new RegExp(`\\s${registers[i]}`,'g');
-        console.log() 
+        let re = new RegExp(`\\s${registers[i]}`,'gi');
         replacedPercent = replacedPercent.map(e => e.replace(re,' ' + '%' + registers[i]));
     }
 

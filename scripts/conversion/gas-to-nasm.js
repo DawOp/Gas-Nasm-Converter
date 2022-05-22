@@ -1,7 +1,7 @@
 function convertToGas(splitedCode) {
     let convertedComments = changeCommentToSlash(splitedCode);
     
-    let deletePercents = deletePercentFromRegisters(convertedComments);
+    let deletePercents = removePercentFromRegisters(convertedComments);
 
     return deletePercents.join('\n');
 }
@@ -11,7 +11,7 @@ function changeCommentToSlash(splitedCode) {
     return replacedComment;
 }
 
-function deletePercentFromRegisters(splitedCode) {
+function removePercentFromRegisters(splitedCode) {
     let replacedComment = splitedCode.map(e => e.replaceAll('%',''));
     return replacedComment;
 }
