@@ -48,7 +48,7 @@
     </div>
 
     <script>
-        var input_editor = CodeMirror.fromTextArea(document.getElementById('input-editor'), {
+        var inputEditor = CodeMirror.fromTextArea(document.getElementById('input-editor'), {
             mode: "gas",
             tabSize: 4,
             dragDrop: true,
@@ -56,7 +56,7 @@
             theme: "dracula"
         });
 
-        var output_editor = CodeMirror.fromTextArea(document.getElementById('output-editor'), {
+        var outputEditor = CodeMirror.fromTextArea(document.getElementById('output-editor'), {
             mode: "gas",
             tabSize: 4,
             lineNumbers: true,
@@ -64,15 +64,15 @@
             theme: "dracula"
         });
 
-        input_editor.setSize(500, 500);
-        output_editor.setSize(500, 500);
-        output_editor.setValue("<No File>");
+        inputEditor.setSize(430, 450);
+        outputEditor.setSize(430, 450);
+        outputEditor.setValue("<No File>");
             
     </script>
 
     <script type="text/javascript" src="scripts/conversion/init-conversion.js"></script>
-    <script type="text/javascript" src="scripts/conversion/nasm-to-gasm.js"></script>
-    <script type="text/javascript" src="scripts/conversion/gasm-to-nasm.js"></script>
+    <script type="text/javascript" src="scripts/conversion/nasm-to-gas.js"></script>
+    <script type="text/javascript" src="scripts/conversion/gas-to-nasm.js"></script>
     <script type="text/javascript" src="scripts/upload-download.js"></script>
     <script type="text/javascript" src="scripts/editors-display.js"></script>
 </body>

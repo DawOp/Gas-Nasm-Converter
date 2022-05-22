@@ -1,12 +1,12 @@
-function start_conversion(editor) {
-    let splited_code = splitInputIntoLines(editor);
+function startConversion(editor) {
+    let splitedCode = splitInputIntoLines(editor);
     if (conversionType() == "gas") {
-        let output = convertToGas(splited_code);
-        output_editor.setValue(output);
+        let output = convertToGas(splitedCode);
+        outputEditor.setValue(output);
     }
     else {
-        let output = convertToNasm(splited_code);
-        output_editor.setValue(output);
+        let output = convertToNasm(splitedCode);
+        outputEditor.setValue(output);
     }
 }
 

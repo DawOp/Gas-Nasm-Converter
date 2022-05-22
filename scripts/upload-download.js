@@ -1,10 +1,10 @@
 // Upload file
 
-let upload_button = document.getElementById("upload-button");
-let real_upload = document.getElementById("real-upload");
+let uploadButton = document.getElementById("upload-button");
+let realUpload = document.getElementById("real-upload");
 
-upload_button.addEventListener("click", function() {
-    real_upload.click();    
+uploadButton.addEventListener("click", function() {
+    realUpload.click();    
 });
 
 function readFile(input) {
@@ -15,7 +15,7 @@ function readFile(input) {
     reader.readAsText(file);
     
     reader.onload = function() {
-        input_editor.setValue(reader.result);
+        inputEditor.setValue(reader.result);
     };
   
     reader.onerror = function() {
@@ -27,7 +27,7 @@ function readFile(input) {
 
 // Download file
 
-let download_button = document.getElementById("download-button");
+let downloadButton = document.getElementById("download-button");
 
 function downloadOutput(code) {
     let element = document.createElement('a');
@@ -43,6 +43,6 @@ function downloadOutput(code) {
     document.body.removeChild(element);
 }
 
-download_button.addEventListener("click", function() {
-    downloadOutput(output_editor.getValue());
+downloadButton.addEventListener("click", function() {
+    downloadOutput(outputEditor.getValue());
 })

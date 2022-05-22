@@ -1,37 +1,37 @@
-let convert_timer = 0;
+let convertTimer = 0;
 let isChange = false;
 
 function changeEditor() {
-    input_editor.setValue("");
-    output_editor.setValue("<No File>");
+    inputEditor.setValue("");
+    outputEditor.setValue("<No File>");
 }
 
-input_editor.on("change", function() {
-    if (input_editor.getValue() != "") {
+inputEditor.on("change", function() {
+    if (inputEditor.getValue() != "") {
         document.getElementById("conversion-loader").style.visibility = "visible";
         isChange = true;
-        convert_timer = 3;
+        convertTimer = 3;
     }
     else {
-        convert_timer = 2;
+        convertTimer = 2;
         isChange = true;
     }
 });
 
-function convert_listener() {
-    if (convert_timer == 0 && isChange) {
-        if (input_editor.getValue() == "") {
-            output_editor.setValue("<No File>");
+function convertListener() {
+    if (convertTimer == 0 && isChange) {
+        if (inputEditor.getValue() == "") {
+            outputEditor.setValue("<No File>");
         } else {
-            start_conversion(input_editor);
+            startConversion(inputEditor);
         }
         
         document.getElementById("conversion-loader").style.visibility = "hidden";
         isChange = false;
     }
     else {
-        convert_timer--;
+        convertTimer--;
     }
 }
 
-setInterval(convert_listener,500); // 5
+setInterval(convertListener,500); // 5
