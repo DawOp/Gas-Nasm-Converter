@@ -1,3 +1,18 @@
+registers = [ 'ah', 'al', 'bh', 'bl', 'ch', 'cl', 'dh', 'dl', 'ax', 
+'bx', 'cx', 'dx', 'eax', 'ebx', 'ecx', 'edx', 'rax', 'rbx', 'rcx',    
+'rdx', 'cr0', 'cr1', 'cr2', 'cr3', 'dr0', 'dr1', 'dr2', 'dr3', 
+'dr4', 'dr5', 'dr6', 'dr7', 'si', 'di', 'sp', 'bp', 'esi', 
+'edi', 'esp', 'ebp', 'rsi', 'rdi', 'rsp', 'rbp', 'tr6', 'tr7', 
+'st0', 'st1', 'st2', 'st3', 'st4', 'st5', 'st6', 'st7', 'mm0', 
+'mm1', 'mm2', 'mm3', 'mm4', 'mm5', 'mm6', 'mm7', 'mm8', 'mm9', 
+'mm10', 'mm11', 'mm12', 'mm13', 'mm14', 'mm15', 'xmm0', 'xmm1', 
+'xmm2', 'xmm3', 'xmm4', 'xmm5', 'xmm6', 'xmm7', 'xmm8', 'xmm9', 
+'xmm10', 'xmm11', 'xmm12', 'xmm13', 'xmm14', 'xmm15', 'zmm0', 'zmm1', 
+'zmm2', 'zmm3', 'zmm4', 'zmm5', 'zmm6', 'zmm7', 'zmm8', 'zmm9', 
+'zmm10', 'zmm11', 'zmm12', 'zmm13', 'zmm14', 'zmm15', 'r0', 'r1', 
+'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r11', 
+'r12', 'r13', 'r14', 'r15' ];
+
 function startConversion(editor) {
     let splitedCode = splitInputIntoLines(editor);
     if (conversionType() == "gas") {
