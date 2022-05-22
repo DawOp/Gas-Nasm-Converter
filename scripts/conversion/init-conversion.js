@@ -1,12 +1,12 @@
-let myArray = "";
-
 function start_conversion(editor) {
-    myArray = splitInputIntoLines(editor);
+    let splited_code = splitInputIntoLines(editor);
     if (conversionType() == "gas") {
-        output_editor.setValue("at&t");
+        let output = convertToGas(splited_code);
+        output_editor.setValue(output);
     }
     else {
-        output_editor.setValue("intel");
+        let output = convertToNasm(splited_code);
+        output_editor.setValue(output);
     }
 }
 
