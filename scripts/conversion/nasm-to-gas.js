@@ -1,9 +1,9 @@
 function convertToNasm(splitedCode) {
     let convertedComments = changeCommentToSemicolon(splitedCode);
 
-    let addPercent = addPercentToRegisters(convertedComments);
+    let removePercents = removePercentFromRegisters(convertedComments);
 
-    return addPercent.join('\n');
+    return removePercents.join('\n');
 }
 
 function changeCommentToSemicolon(splitedCode) {
@@ -11,13 +11,7 @@ function changeCommentToSemicolon(splitedCode) {
     return replacedComment;
 }
 
-function addPercentToRegisters(splitedCode) {
-    let replacedPercent = splitedCode;
-
-    for (let i = 0; i < registers.length; i++) {
-        let re = new RegExp(`\\s${registers[i]}`,'gi');
-        replacedPercent = replacedPercent.map(e => e.replace(re,' ' + '%' + registers[i]));
-    }
-
-    return replacedPercent;
+function removePercentFromRegisters(splitedCode) {
+    let replacedComment = splitedCode.map(e => e.replaceAll('%',''));
+    return replacedComment;
 }
