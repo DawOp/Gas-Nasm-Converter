@@ -2,8 +2,12 @@ function convertToGas(splitedCode) {
     let convertedComments = changeCommentToSlash(splitedCode);
     
     let addPercents = addPercentToRegisters(convertedComments);
-    addSuffixToInstruction(addPercents);
-    return addPercents.join('\n');
+    
+    let addSufix = addSuffixToInstruction(addPercents);
+
+    let addDolar = addDolarToNumber(addSufix);
+
+    return addDolar.join('\n');
 }
 
 function changeCommentToSlash(splitedCode) {
@@ -22,6 +26,28 @@ function addPercentToRegisters(splitedCode) {
     }
 
     return replacedPercent;
+}
+
+function addDolarToNumber(splitedCode) {
+    let addedDolar = splitedCode;
+    let hexReg = new RegExp(`0[xX][0-9a-fA-F]+`,'');
+    let numberReg = new RegExp(`[0-9]+`,'');
+
+    for (let i = 0; i < splitedCode.length; i++) {
+        if (checkIfRegisterExist(splitedCode[i]) &&
+            checkIfCommaExist(splitedCode[i]) &&
+            checkNoCommentFirst(splitedCode[i])) {
+            
+            if (hexReg.test(splitedCode[i])) {
+                addedDolar[i] = splitedCode[i].replace(hexReg, '$' + splitedCode[i].match(hexReg));
+            }
+            else {
+                addedDolar[i] = splitedCode[i].replace(numberReg, '$' + splitedCode[i].match(numberReg));
+            }
+        }
+    }
+
+    return addedDolar;
 }
 
 function addSuffixToInstruction(splitedCode) {
@@ -54,5 +80,7 @@ function addSuffixToInstruction(splitedCode) {
             }
         }
     }
+    
+    return splitedCode;
 }
 
