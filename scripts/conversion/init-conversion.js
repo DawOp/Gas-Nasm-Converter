@@ -13,6 +13,11 @@ registers = [ 'ah', 'al', 'bh', 'bl', 'ch', 'cl', 'dh', 'dl', 'ax',
 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9', 'r10', 'r11', 
 'r12', 'r13', 'r14', 'r15' ];
 
+operandSizesNasm = ['byte', 'word', 'dword', 'qword', 'oword'];
+
+gasSuffixes = ['b', 'w', 'l', 'q', 'o'];
+
+
 function startConversion(editor) {
     let splitedCode = splitInputIntoLines(editor);
     if (conversionType() == "gas") {
@@ -37,4 +42,35 @@ function conversionType() {
         return "gas";
 
     return "nasm";
+}
+
+function checkIfCommaExist(lineOfCode) {
+    const comma_index = lineOfCode.indexOf(',');
+    const semicolon_index = lineOfCode.indexOf(';');
+    const slash_index = lineOfCode.indexOf('/');
+
+    return (comma_index > -1) &&
+        (semicolon_index > comma_index || semicolon_index == -1) &&
+        (slash_index > comma_index || slash_index == -1);  // make sure that comma is not commented
+}
+
+function checkIfRegisterExist(lineOfCode) {
+    for (let i = 0; i < registers.length; i++) {
+        let reg = new RegExp('%' + registers[i],'gi');
+        
+        if (reg.test(lineOfCode)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function checkNoCommentFirst(lineOfCode) {
+    for (let i = 0; i < lineOfCode.length; i++) {
+        if (lineOfCode[i] != ' ') {
+            return !(lineOfCode[i] == ';' || lineOfCode[i] == '/');
+        }
+    }
+    return true;
 }
