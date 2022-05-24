@@ -1,12 +1,14 @@
 function convertToGas(splitedCode) {
     let convertedComments = changeCommentToSlash(splitedCode);
     
-    let addPercents = addPercentToRegisters(convertedComments);
+    let convertAdresses = convertAdressingToGas(convertedComments);
+    
+    let addPercents = addPercentToRegisters(convertAdresses);
     
     let addSufix = addSuffixToInstruction(addPercents);
 
     let addDolar = addDolarToNumber(addSufix);
-
+    
     return addDolar.join('\n');
 }
 
@@ -21,8 +23,8 @@ function addPercentToRegisters(splitedCode) {
     for (let i = 0; i < registers.length; i++) {
         let reg = new RegExp(`\\s${registers[i]}`,'gi');
         replacedPercent = replacedPercent.map(e => e.replace(reg,' ' + '%' + registers[i]));
-        let reg_bracket = new RegExp(`\\[${registers[i]}`,'gi');
-        replacedPercent = replacedPercent.map(e => e.replace(reg_bracket,'[' + '%' + registers[i]));
+        let reg_bracket = new RegExp(`\\(${registers[i]}`,'gi');
+        replacedPercent = replacedPercent.map(e => e.replace(reg_bracket,'(' + '%' + registers[i]));
     }
 
     return replacedPercent;
@@ -84,3 +86,21 @@ function addSuffixToInstruction(splitedCode) {
     return splitedCode;
 }
 
+function convertAdressingToGas(splitedCode) {
+    let nasmReg = new RegExp(`\\[\\w+[-+]+[0-9]+\\]`,'');
+    let registerReg = new RegExp(`\\w+`,'');
+    let numberReg = new RegExp(`[-+]+[0-9]+`,'');
+
+    for (let i = 0; i < splitedCode.length; i++) {
+        if (nasmReg.test(splitedCode[i])) {
+            let addressingMatch = splitedCode[i].match(nasmReg)[0];
+            let register = addressingMatch.match(registerReg);
+            let number = addressingMatch.match(numberReg);
+            let gasAddressing = number + '(' + register + ')';
+            
+            splitedCode[i] = splitedCode[i].replace(nasmReg, gasAddressing);
+        }
+    }
+
+    return splitedCode;
+}

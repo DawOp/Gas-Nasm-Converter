@@ -7,7 +7,9 @@ function convertToNasm(splitedCode) {
 
     let replacedNumbers = removeDolarFromNumber(removePercents);
 
-    return replacedNumbers.join('\n');
+    let convertAddress = convertAdressingToNasm(replacedNumbers);
+
+    return convertAddress.join('\n');
 }
 
 function changeCommentToSemicolon(splitedCode) {
@@ -39,6 +41,26 @@ function addOperandSize(splitedCode) {
                     splitedCode[i] = splitedCode[i].replace(instructionReg, instruction + ' ' + operandSizesNasm[l] + ' PTR')
                 }
             }    
+        }
+    }
+
+    return splitedCode;
+}
+
+function convertAdressingToNasm(splitedCode) {
+    let gasReg = new RegExp(`[-+][0-9]+\\(\\w+\\)`,'');
+    let registerReg = new RegExp(`\[a-zA-z\]+`,'');
+    let numberReg = new RegExp(`[-+]+[0-9]+`,'');
+
+    for (let i = 0; i < splitedCode.length; i++) {
+        if (gasReg.test(splitedCode[i])) {
+            let addressingMatch = splitedCode[i].match(gasReg)[0];
+            
+            let register = addressingMatch.match(registerReg);
+            let number = addressingMatch.match(numberReg);
+            let nasmAddressing = '['+ register + number + ']';
+            
+            splitedCode[i] = splitedCode[i].replace(gasReg, nasmAddressing);
         }
     }
 
