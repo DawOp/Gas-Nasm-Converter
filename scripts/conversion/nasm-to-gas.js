@@ -65,13 +65,14 @@ function addSuffixToInstruction(splitedCode) {
         if (checkIfRegisterExist(splitedCode[i]) &&
             checkIfCommaExist(splitedCode[i]) &&
             checkNoCommentFirst(splitedCode[i])) {
-            
-            let notChanged = true;    
-            // case 1: size specified
-            for (let j = 0; j < splitedCode[i].length; j++) {
-                for (let k = 0; k < operandSizesNasm.length; k++) {
+                let instructionReg = new RegExp(`\\w+`,'');            
+                let notChanged = true;
+                
+                // case 1: size specified
+                for (let j = 0; j < splitedCode[i].length; j++) {
+                    for (let k = 0; k < operandSizesNasm.length; k++) {
                     let operandSizeReg = new RegExp(`\\s${operandSizesNasm[k]}\\sptr`,'gi');
-                    let instructionReg = new RegExp(`\\w+`,'');
+
 
                     if (operandSizeReg.test(splitedCode[i])) {
                         splitedCode[i] = splitedCode[i].replace(operandSizeReg,'');
@@ -86,7 +87,13 @@ function addSuffixToInstruction(splitedCode) {
 
             // case 2: diffrent registers size
             if (notChanged) {
-
+                for (let j = 0; j < registers.length; j++) {
+                    let reg = new RegExp('%' + registers[j],'gi');
+                    if (reg.test(splitedCode[i])) {
+                        console.log("roza");
+                        splitedCode[i] = splitedCode[i].replace(instructionReg, splitedCode[i].match(instructionReg)[0] + gasSuffixes[2]);
+                    }
+                }
             }
         }
     }
