@@ -3,17 +3,19 @@ function convertToNasm(splitedCode) {
 
     let addSize = addOperandSize(convertedComments);
 
-    let removePercents = removePercentFromRegisters(addSize);
-
-    let replacedNumbers = removeDolarFromNumber(removePercents);
+    let replacedNumbers = removeDolarFromNumber(addSize);
 
     let convertAddress = convertAdressingToNasm(replacedNumbers);
 
     let format = removeMultipleSpaces(convertAddress);
     format = convertTabsToSpaces(format);
     format = convertFrontSpacesToTabs(format);
+    
+    let swapped = swapSides(format);
 
-    return format.join('\n');
+    let removePercents = removePercentFromRegisters(swapped);
+
+    return removePercents.join('\n');
 }
 
 function changeCommentToSemicolon(splitedCode) {

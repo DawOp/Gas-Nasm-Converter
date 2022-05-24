@@ -12,8 +12,10 @@ function convertToGas(splitedCode) {
     let format = removeMultipleSpaces(addDolar); 
     format = convertTabsToSpaces(format);
     format = convertFrontSpacesToTabs(format);
+    
+    let swapped = swapSides(format);
 
-    return format.join('\n');
+    return swapped.join('\n');
 }
 
 function changeCommentToSlash(splitedCode) {

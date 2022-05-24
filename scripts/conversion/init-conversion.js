@@ -92,3 +92,22 @@ function convertFrontSpacesToTabs(splitedCode) {
     let removedTabs = splitedCode.map(e =>  e.replace(remTabsReg,'\t') );
     return removedTabs;
 }
+
+function swapSides(splitedCode) {
+    let toSwapReg = new RegExp(`\\t*[a-zA-Z]+.+,\\s[-()\\$%a-zA-Z0-9]+`,'');
+    for (let i = 0; i < splitedCode.length; i++) {
+        if (checkIfRegisterExist(splitedCode[i]) &&
+            checkIfCommaExist(splitedCode[i]) &&
+            checkNoCommentFirst(splitedCode[i])) {
+            
+            let matchOperation = splitedCode[i].match(toSwapReg)[0];
+            let twoParts = matchOperation.split(',');
+            let secondSide = twoParts[1].trim();
+            let firstSide = twoParts[0].substr(twoParts[0].indexOf(" ") + 1).trim();
+            let opperation = twoParts[0].split(" ")[0];
+
+            splitedCode[i] = splitedCode[i].replace(toSwapReg, opperation + ' ' + secondSide + ', ' + firstSide);
+        }
+    }
+    return splitedCode;
+}
