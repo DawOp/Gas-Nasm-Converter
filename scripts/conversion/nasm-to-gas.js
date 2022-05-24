@@ -33,7 +33,7 @@ function addPercentToRegisters(splitedCode) {
 function addDolarToNumber(splitedCode) {
     let addedDolar = splitedCode;
     let hexReg = new RegExp(`0[xX][0-9a-fA-F]+`,'');
-    let numberReg = new RegExp(`[0-9]+`,'');
+    let numberReg = new RegExp(`[0-9]+\\s|\\s[0-9]+`,'');
 
     for (let i = 0; i < splitedCode.length; i++) {
         if (checkIfRegisterExist(splitedCode[i]) &&
@@ -41,10 +41,12 @@ function addDolarToNumber(splitedCode) {
             checkNoCommentFirst(splitedCode[i])) {
             
             if (hexReg.test(splitedCode[i])) {
-                addedDolar[i] = splitedCode[i].replace(hexReg, '$' + splitedCode[i].match(hexReg));
+                addedDolar[i] = splitedCode[i].replace(hexReg, ' $' + splitedCode[i].match(hexReg)[0]);
             }
             else {
-                addedDolar[i] = splitedCode[i].replace(numberReg, '$' + splitedCode[i].match(numberReg));
+                if (numberReg.test(splitedCode[i])) {
+                    addedDolar[i] = splitedCode[i].replace(numberReg, ' $' + splitedCode[i].match(numberReg)[0].trim());
+                }
             }
         }
     }
