@@ -74,3 +74,21 @@ function checkNoCommentFirst(lineOfCode) {
     }
     return true;
 }
+
+function removeMultipleSpaces(splitedCode) {
+    let remSpaceReg = new RegExp('\\s\\s+','g');
+    let removedSpaced = splitedCode.map(e =>  e.replace(remSpaceReg,' ') );
+    return removedSpaced;
+}
+
+function convertTabsToSpaces(splitedCode) {
+    let remTabsReg = new RegExp('\\t','g');
+    let removedTabs = splitedCode.map(e =>  e.replace(remTabsReg,' ') );
+    return removedTabs;
+}
+
+function convertFrontSpacesToTabs(splitedCode) {
+    let remTabsReg = new RegExp('^\\s','g');
+    let removedTabs = splitedCode.map(e =>  e.replace(remTabsReg,'\t') );
+    return removedTabs;
+}

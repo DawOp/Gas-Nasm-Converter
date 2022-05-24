@@ -9,7 +9,11 @@ function convertToGas(splitedCode) {
 
     let addDolar = addDolarToNumber(addSufix);
     
-    return addDolar.join('\n');
+    let format = removeMultipleSpaces(addDolar); 
+    format = convertTabsToSpaces(format);
+    format = convertFrontSpacesToTabs(format);
+
+    return format.join('\n');
 }
 
 function changeCommentToSlash(splitedCode) {

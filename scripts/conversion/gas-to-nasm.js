@@ -9,7 +9,11 @@ function convertToNasm(splitedCode) {
 
     let convertAddress = convertAdressingToNasm(replacedNumbers);
 
-    return convertAddress.join('\n');
+    let format = removeMultipleSpaces(convertAddress);
+    format = convertTabsToSpaces(format);
+    format = convertFrontSpacesToTabs(format);
+
+    return format.join('\n');
 }
 
 function changeCommentToSemicolon(splitedCode) {
@@ -55,7 +59,7 @@ function convertAdressingToNasm(splitedCode) {
     for (let i = 0; i < splitedCode.length; i++) {
         if (gasReg.test(splitedCode[i])) {
             let addressingMatch = splitedCode[i].match(gasReg)[0];
-            
+
             let register = addressingMatch.match(registerReg);
             let number = addressingMatch.match(numberReg);
             let nasmAddressing = '['+ register + number + ']';
