@@ -54,8 +54,8 @@ function addOperandSize(splitedCode) {
 }
 
 function convertAdressingToNasm(splitedCode) {
-    let gasReg = new RegExp(`[-+][0-9]+\\(\\w+\\)`,'');
-    let registerReg = new RegExp(`\[a-zA-z\]+`,'');
+    let gasReg = new RegExp(`[-+][0-9]+\\(\\%\\w+\\)`,'');
+    let registerReg = new RegExp(`\[\\%a-zA-z\]+`,'');
     let numberReg = new RegExp(`[-+]+[0-9]+`,'');
 
     for (let i = 0; i < splitedCode.length; i++) {

@@ -90,8 +90,8 @@ function addSuffixToInstruction(splitedCode) {
                 for (let j = 0; j < registers.length; j++) {
                     let reg = new RegExp('%' + registers[j],'gi');
                     if (reg.test(splitedCode[i])) {
-                        console.log("roza");
                         splitedCode[i] = splitedCode[i].replace(instructionReg, splitedCode[i].match(instructionReg)[0] + gasSuffixes[2]);
+                        break;
                     }
                 }
             }

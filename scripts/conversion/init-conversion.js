@@ -94,7 +94,7 @@ function convertFrontSpacesToTabs(splitedCode) {
 }
 
 function swapSides(splitedCode) {
-    let toSwapReg = new RegExp(`\\t*[a-zA-Z]+.+,\\s[-()\\$%a-zA-Z0-9]+`,'');
+    let toSwapReg = new RegExp(`\\t*[a-zA-Z]+.+,\\s[-\\[\\]()\\$%a-zA-Z0-9]+`,'');
     for (let i = 0; i < splitedCode.length; i++) {
         if (checkIfRegisterExist(splitedCode[i]) &&
             checkIfCommaExist(splitedCode[i]) &&
