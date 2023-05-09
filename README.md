@@ -11,17 +11,23 @@ npm install
 
 to install dependencies.
 
+
+
 To bundle the app using webpack:
 
 ``` 
 npm run build
 ```
 
+
+
 To run it on localhost:
 
 ``` 
 npm run dev
 ```
+
+
 
 ### Limitations
 
