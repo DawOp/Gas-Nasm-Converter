@@ -4,16 +4,25 @@ The Gasm-Nasm Converter is a web app that allows you to convert assembly code wr
 
 ## Installation
 To install Gasm-Nasm Converter run
-``` npm install ```
+
+``` 
+npm install
+```
+
 to install dependencies.
 
 To bundle the app using webpack:
-``` npm run build ```
+
+``` 
+npm run build
+```
 
 To run it on localhost:
-``` npm run dev ```
 
+``` 
+npm run dev
+```
 
-## Limitations
+### Limitations
 
 The GasmToNasm Converter supports basic assembly instructions and syntax. It may not handle all edge cases or more advanced assembly code.
