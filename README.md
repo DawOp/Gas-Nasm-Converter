@@ -3,8 +3,15 @@
 The Gasm-Nasm Converter is a web app that allows you to convert assembly code written in Intel syntax to AT&T syntax and vice versa. It is written in JavaScript and can be accessed through a web browser.
 
 ## Installation
+To install Gasm-Nasm Converter run
+``` npm install ```
+to install dependencies.
 
-No installation is necessary to use the GasmToNasm Converter. Simply visit the website where the app is hosted and start using it immediately.
+To bundle the app using webpack:
+``` npm run build ```
+
+To run it on localhost:
+``` npm run dev ```
 
 
 ## Limitations
